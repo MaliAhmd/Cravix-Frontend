@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cravix - Admin Dashboard</title>
+  <link rel="stylesheet" href="admin_dashboard.css" />
+  <link rel="icon" type="image/x-icon" href="./images/logo.png" />
+</head>
+
+<body>
+  <div class="overlay" id="overlay"></div>
+  <div id="loader-overlay" class="loader-overlay" style="display: none;">
+  <div class="loader">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+</div>
+</div>
+  <div class="nav">
+    <div id="nav_items" class="nav_items">
+      <img class="dashboard_logo" src="./images/logo0.png" alt="" />
+    </div>
+    <div class="nav_items" id="admin_text">Admin Dashboard</div>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar_items">
+      <div class="items_1">
+        <div class="sub_items" data-target="addProduct-section">
+          <img src="./images/shopping-bag.png" alt="" /><span>Add Product</span>
+        </div>
+        <!-- <div class="sub_items" data-target="manager">
+          <img src="./images/manager.png" alt="" /><span>Managers</span>
+        </div> -->
+      </div>
+      <div class="items_2">
+        <div class="sub_items" data-target="total-orders">
+          <img src="./images/clipboard.png" alt="" /><span>Total Orders</span>
+        </div>
+        <div class="sub_items" id="logout-btn">
+          <img src="./images/logout.png" alt="" /><span>Logout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main_content">
+    <div class="content-section active" id="addProduct-section">
+      <div class="form-container">
+        <div class="title">Add Product</div>
+        <form id="product-form">
+          <!-- Product Image Upload -->
+          <div class="product">
+            <div class="product_left">
+              <div class="form-group image-upload">
+                <label for="file-input">Product Image</label>
+                <button type="button" class="upload-btn" onclick="document.getElementById('file-input').click()">
+                  Choose Image
+                </button>
+                <input type="file" id="file-input" accept="image/*" />
+                <img id="image-preview" src="#" alt="Preview" />
+              </div>
+            </div>
+            <div class="product_left">
+              <!-- Product Name -->
+              <div class="form-group">
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" placeholder="Enter product name" required />
+              </div>
+
+              <!-- Product Price -->
+              <div class="form-group">
+                <label for="product-price">Price (Rs)</label>
+                <input type="text" id="product-price" placeholder="Enter price" min="0" step="0.01" required />
+              </div>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <button type="submit" class="add-btn">Add Product</button>
+        </form>
+      </div>
+
+      <div class="product_show">
+        <div class="p_items">
+          <div class="title">All Products</div>
+          <div class="search_bar">
+            <img class="icon" src="./images/search.png" alt="" />
+            <input class="input" type="search" placeholder="Search your menu here" id="productSearch" />
+          </div>
+        </div>
+        <div class="food">
+          <!-- <div class="menu">
+              <img class="fimg" src="./images/chheseburger.jpeg" alt="" />
+              <div class="fdetail">
+                <div class="fname">Pizza</div>
+                <div class="price_order">
+                  <div>
+                    <span class="price">Rs 900</span>
+                  </div>
+                  <button class="order_btn">Update</button>
+                  <button class="order_btn">Delete</button>
+                </div>
+              </div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="content-section" id="manager">
+      <h2>Total Orders</h2>
+      <p>This is the total orders section content.</p>
+    </div> -->
+
+    <div class="content-section" id="total-orders">
+      <!-- Total Orders content goes here -->
+      <div class="container">
+        <h1>Order History</h1>
+         <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Search by order number...">
+            <button class="search-btn" id="search-btn">Search</button>
+            <button class="search-btn" id="clear-search">Clear</button>
+        </div>
+
+        <div class="transactions-container">
+          <div class="transaction-list">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order #</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-table">
+                <!-- Transactions will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="transaction-details" id="transaction-details">
+            <div class="transaction-header">
+              <h2>Order Details</h2>
+              <button class="close-btn" id="close-details">&times;</button>
+            </div>
+
+            <div class="transaction-meta">
+              <div class="meta-item">
+                <div class="meta-label">Order Number</div>
+                <div class="meta-value" id="detail-order-number"></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Date</div>
+                <div class="meta-value" id="detail-date"></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Items Count</div>
+                <div class="meta-value" id="detail-item-count"></div>
+              </div>
+            </div>
+
+            <div class="items-list">
+              <h3>Items</h3>
+              <div id="items-container">
+                <!-- Items will be loaded here -->
+              </div>
+            </div>
+
+            <div class="total-amount">
+              Total: <span id="detail-total"></span>
+            </div>
+            <button class="print-btn" id="print-receipt">Print Receipt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="update_container">
+    <div class="update_start">
+      <form action="" class="update_form" data-product-id="" onsubmit="handleUpdate(event)">
+        <div>
+          <label for="">Product Image</label>
+          <button type="button" class="upt_image" onclick="document.getElementById('upt-file-input').click()">
+            Choose Image
+          </button>
+          <input type="file" id="upt-file-input" accept="image/*" />
+          <img id="upt-image-preview" src="#" alt="Preview" />
+        </div>
+        <div>
+          <label for="">Product Name</label>
+          <input type="text" id="upt-product-name" placeholder="Enter product name" required />
+        </div>
+        <div>
+          <label for=""> Product Price</label>
+          <input type="text" id="upt-product-price" placeholder="Enter price" min="0" step="0.01" required />
+        </div>
+        <div class="Upt_btn">
+          <button class="update_button">Update</button>
+          <button id="close_btn" class="update_button" onclick="close_updateContainer()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="./admin_dashboard.js"></script>
+  <script src="./admin_transaction.js"></script>
+</body>
+
+</html>

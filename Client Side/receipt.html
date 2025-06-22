@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cravix - Receipt</title>
+    <link rel="icon" type="image/x-icon" href="./images/logo.png" />
+    <link rel="stylesheet" href="recipt.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="img_container">
+            <img class="logo" src="./images/logo0.png" alt="">
+        </div>
+        <div class="contact_container">
+            <span class="heading">Contact Info:</span>
+            <p class="details">
+                Address : street city, state 0000</br>
+                Email : Cravix@gmail.com</br>
+                Phone : 555-555-5555</br>
+            </p>
+        </div>
+        <div class="table_container">
+            <p>Order No.: 0000</p>
+            <table id="customers">
+                <tr>
+                    <th>Items Name</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+                 ${items.map(item => `
+                <tr class="service">
+                  <td class="tableitem">${item.name}</td>
+                  <td class="tableitem">${item.quantity || 1}</td>
+                  <td class="tableitem">${item.updatedPrice.toFixed(2)}</td>
+                </tr>
+              `).join('')}
+               
+            </table>
+            <div class="total_detail">
+                <p>Subtotal: <span>${subtotal.toFixed(2)}</span></p>
+                <p>GST(10%): <span>${gst.toFixed(2)}</span></p>
+                <p>Total: <span>${total.toFixed(2)}</span></p>
+                <p>Amount Paid: <span>${amountPaid.toFixed(2)}</span></p>
+                <p>Balance Remain: <span>${balance.toFixed(2)}</span></p>
+            </div>
+        </div>
+        <div class="thanks_container">
+            <p class="legal"><strong>Thank you for your Order!</strong><br>
+                ${new Date().toLocaleString()}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carvix</title>
+  <link rel="icon" type="image/x-icon" href="./images/logo.png" />
+  <link rel="stylesheet" href="https://unpkg.com/transition-style" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="overlay" id="overlay"></div>
+  <div class="navbar">
+    <div class="navbar_items">
+      <div class="logo">
+        <img src="./images/logo0.png" alt="" />
+      </div>
+
+      <div class="search_bar">
+        <img class="icon" src="./images/search.png" alt="" />
+        <input id="productSearch" class="input" type="search" placeholder="Search your menu here" />
+      </div>
+
+      <div class="navbar_items_right">
+        <div class="sub_1">
+          <button class="login_btn" onclick="popup()">Login</button>
+        </div>
+        <div class="sub_2">
+          <img class="cart" src="./images/cart.png" alt="" onclick="cart_Open()" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar_items">
+      <div class="items_1">
+        <div class="sub_items" data-target="order-section">
+          <img src="./images/dinner.png" alt="" /><span>Order</span>
+        </div>
+        <div class="sub_items" data-target="orders-section">
+          <img src="./images/clipboard.png" alt="" /><span>Orders History</span>
+        </div>
+      </div>
+      <div class="items_2">
+        <div class="sub_items" data-target="settings-section">
+          <img src="./images/settings.png" alt="" /><span>Settings</span>
+        </div>
+        <div class="sub_items" id="logout-btn">
+          <img src="./images/logout.png" alt="" /><span>Logout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main_content">
+    <div class="content-section active" id="order-section">
+      <!-- Order content goes here -->
+      <div class="food">
+        <!-- <div class="menu">
+          <img class="fimg" src="./images/chheseburger.jpeg" alt="" />
+          <div class="fdetail">
+            <div class="fname">Cheese Burger</div>
+            <div class="price_order">
+              <div>
+                <span class="price">Rs 900</span>
+              </div>
+              <button class="order_btn">Order</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="content-section" id="orders-section">
+      <!-- Total Orders content goes here -->
+      <div class="container">
+        <h1>Order History</h1>
+         <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Search by order number...">
+            <button class="search-btn" id="search-btn">Search</button>
+            <button class="search-btn" id="clear-search">Clear</button>
+        </div>
+
+        <div class="transactions-container">
+          <div class="transaction-list">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order #</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-table">
+                <!-- Transactions will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="transaction-details" id="transaction-details">
+            <div class="transaction-header">
+              <h2>Order Details</h2>
+              <button class="close-btn" id="close-details">&times;</button>
+            </div>
+
+            <div class="transaction-meta">
+              <div class="meta-item">
+                <div class="meta-label">Order Number</div>
+                <div class="meta-value" id="detail-order-number"></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Date</div>
+                <div class="meta-value" id="detail-date"></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Items Count</div>
+                <div class="meta-value" id="detail-item-count"></div>
+              </div>
+            </div>
+
+            <div class="items-list">
+              <h3>Items</h3>
+              <div id="items-container">
+                <!-- Items will be loaded here -->
+              </div>
+            </div>
+
+            <div class="total-amount">
+              Total: <span id="detail-total"></span>
+            </div>
+            <button class="print-btn" id="print-receipt">Print Receipt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section" id="settings-section">
+      <!-- Settings content goes here -->
+      <h2>Settings</h2>
+      <p>This is the settings section content.</p>
+    </div>
+  </div>
+  </div>
+  <!-- login popup -->
+  <div class="effect">
+    <div class="login_popup">
+      <div class="login_container">
+        <div class="cont_1">
+          <img class="login_img" src="./images/back.png" alt="" />
+          <button class="dismiss" onclick="closePopup()">×</button>
+        </div>
+        <div class="cont_2">
+          <div class="login_cont2">
+            <p class="title">Sign In</p>
+            <form class="form">
+              <div class="flex-column">
+                <label>Email </label>
+              </div>
+              <div class="inputForm">
+                <img class="icon_img" src="./images/login.png" alt="">
+                <input type="email" class="inputt" placeholder="Enter your Email" />
+              </div>
+
+              <div class="flex-column">
+                <label>Password </label>
+              </div>
+              <div class="inputForm">
+                <img class="icon_img" src="./images/password.png" alt="">
+                <input type="password" class="inputt" placeholder="Enter your Password" />
+                <img class="p_eye" src="./images/passwordeye.png" alt="">
+              </div>
+
+              <div class="flex-row">
+                <div>
+                  <input type="checkbox" />
+                  <label>Remember me </label>
+                </div>
+                <span class="span">Forgot password?</span>
+              </div>
+              <button class="button-submit">Sign In</button>
+              <p class="p">
+                Don't have an account? <span class="span" id="signup" onclick="signup_Popup()">Sign Up</span>
+              </p>
+              <p class="p line">Or With</p>
+
+              <div class="flex-row">
+                <button class="btn google">
+                  <img class="icon_img" src="./images/google.png" alt="">
+                  Google
+                </button>
+
+                <button class="btn apple">
+                  <img class="icon_img" src="./images/facebook.png" alt="">
+                  facebook
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- signup popup -->
+
+    <div class="signup_popup">
+      <div class="login_container">
+        <div class="cont_2">
+          <div class="login_cont2">
+            <p class="signup_title">Sign up</p>
+            <form class="form">
+              <div class="flex-column">
+                <label>Name</label>
+              </div>
+              <div class="inputForm">
+                <img class="icon_img" src="./images/user.png" alt="">
+                <input type="text" class="inputt" placeholder="Enter your Name" />
+              </div>
+
+              <div class="flex-column">
+                <label>Email </label>
+              </div>
+              <div class="inputForm">
+                <img class="icon_img" src="./images/login.png" alt="">
+                <input type="email" class="inputt" placeholder="Enter your Email" />
+              </div>
+
+              <div class="flex-column">
+                <label>Password </label>
+              </div>
+              <div class="inputForm">
+                <img class="icon_img" src="./images/password.png" alt="">
+                <input type="password" class="inputt" placeholder="Enter your Password" />
+                <img class="p_eye" src="./images/passwordeye.png" alt="">
+              </div>
+
+              <div class="flex-column">
+                <label>Confirm Password </label>
+              </div>
+              <div class="inputForm">
+                <img class="icon_img" src="./images/password.png" alt="">
+                <input type="password" class="inputt" placeholder="Enter your Password" />
+                <img class="p_eye" src="./images/passwordeye.png" alt="">
+              </div>
+              <button class="button-submit">Sign up</button>
+              <p class="p">
+                Already have an account? <span class="span" onclick="popup()">Login</span>
+              </p>
+            </form>
+          </div>
+        </div>
+        <div class="cont_1">
+          <img class="login_img" src="./images/signup.png" alt="" />
+          <button class="dismiss" onclick="signup_closePopup()">×</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart_slide">
+    <div class="cart_items">
+      <div class="head">
+        <span class="cart_text_1">Your Cart</span>
+        <span class="cart_text_2">Clear you Cart</span>
+      </div>
+      <div class="middle">
+        <img src="./images/cart-empty.png" alt="">
+        <span class="middle_text">Your cart is empty</span>
+      </div>
+      <div class="total_price">
+        <div class="payment">
+          <div class="payment_summary">Payment Summary</div>
+          <div class="subtotal">
+            <div class="subtotal_items">
+              <span class="subtotal_text">Sub Total</span>
+              <span class="subtotal_price"></span>
+            </div>
+            <div class="subtotal_items">
+              <span class="subtotal_text">GST(10%)</span>
+              <span class="subtotal_price"></span>
+            </div>
+            <hr>
+            <div class="subtotal_items">
+              <span class="subtotal_total">Total</span>
+              <span id="subtotal_total" class="subtotal_total"></span>
+            </div>
+            <div class="subtotal_items">
+              <span class="subtotal_total">Amount Paid</span>
+              <div class="amount">
+                <Span>Rs</Span>
+                <input type="text" id="amountPaid" class="amount-input" required>
+              </div>
+            </div>
+            <div class="subtotal_items balance-display" style="display: none;">
+              <span class="subtotal_total">Balance</span>
+              <span class="subtotal_price" id="balanceAmount">Rs 0</span>
+            </div>
+          </div>
+        </div>
+        <button class="charge_btn">
+          Charge
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- clear cart popup -->
+  <div class="clear-cart-popup">
+    <div class="clear-cart-popup-content">
+      <p>Are you sure you want to clear your cart?</p>
+      <div class="clear-cart-buttons">
+        <button id="confirm-clear" class="clear-cart-btn confirm-btn">Yes</button>
+        <button id="cancel-clear" class="clear-cart-btn cancel-btn">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="product.js"></script>
+  <script src="script.js"></script>
+  <script src="cart.js"></script>
+  <script src="transactions.js"></script>
+</body>
+
+</html>
