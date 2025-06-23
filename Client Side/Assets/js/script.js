@@ -1,24 +1,13 @@
 // ===== Global Popup Functions =====
 function popup() {
     document.querySelector(".login_popup").style.display = "block";
-    document.querySelector(".overlay").style.display = "block";
     document.querySelector(".signup_popup").style.display = "none";
 }
 
-function closePopup() {
-    document.querySelector(".login_popup").style.display = "none";
-    document.querySelector(".overlay").style.display = "none";
-}
 
 function signup_Popup() {
     document.querySelector(".signup_popup").style.display = "block";
-    document.querySelector(".overlay").style.display = "block";
     document.querySelector(".login_popup").style.display = "none";
-}
-
-function signup_closePopup() {
-    document.querySelector(".signup_popup").style.display = "none";
-    document.querySelector(".overlay").style.display = "none";
 }
 
 function cart_Open() {
@@ -59,15 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Overlay click handler (closes ALL popups & cart)
     document.querySelector('.overlay')?.addEventListener('click', function () {
         document.querySelector(".cart_slide")?.classList.remove('active');
-        document.querySelector(".login_popup").style.display = "none";
-        document.querySelector(".signup_popup").style.display = "none";
+        // document.querySelector(".login_popup").style.display = "none";
+        // document.querySelector(".signup_popup").style.display = "none";
         this.style.display = "none";
     });
 
     // Prevent clicks inside popups/cart from closing them
     document.querySelector('.cart_slide')?.addEventListener('click', (e) => e.stopPropagation());
-    document.querySelector('.login_popup')?.addEventListener('click', (e) => e.stopPropagation());
-    document.querySelector('.signup_popup')?.addEventListener('click', (e) => e.stopPropagation());
+    // document.querySelector('.login_popup')?.addEventListener('click', (e) => e.stopPropagation());
+    // document.querySelector('.signup_popup')?.addEventListener('click', (e) => e.stopPropagation());
 });
 
 

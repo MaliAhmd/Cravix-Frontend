@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add receipt header with logo
     printWindow.document.write(`
       <div class="receipt-header">
-        <img src="./images/logo.png" class="receipt-logo" alt="Company Logo">
+        <img src="./Assets/images/logo.png" class="receipt-logo" alt="Company Logo">
         <div class="receipt-title">ORDER RECEIPT</div>
         <div class="receipt-subtitle">Thank you for your purchase!</div>
       </div>

@@ -108,7 +108,7 @@ function updateCartItems() {
           <button class="qc_btn increment-btn">+</button>
         </div>
         <div class="del">
-          <img src="./images/delete.png" alt="" class="delete-img">
+          <img src="./Assets/images/delete.png" alt="" class="delete-img">
         </div>
       </div>
       <hr>
@@ -325,7 +325,7 @@ function printReceipt(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cravix - Receipt</title>
-    <link rel="icon" type="image/x-icon" href="./images/logo.png" />
+    <link rel="icon" type="image/x-icon" href="./Assets/images/logo.png" />
     <style>
 
 @media print {
@@ -516,7 +516,7 @@ body {
 <body>
     <div class="container">
         <div class="img_container">
-            <img class="logo" src="./images/logo0.png" alt="">
+            <img class="logo" src="./Assets/images/logo0.png" alt="">
         </div>
         <div class="contact_container">
             <span class="heading">Contact Info:</span>

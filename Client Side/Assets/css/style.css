@@ -323,7 +323,7 @@ ul {
 }
 
 .login_popup {
-  display: none;
+  /* display: none; */
   position: fixed;
   top: 10%;
   left: 10%;
@@ -380,7 +380,7 @@ ul {
   display: flex;
   flex-direction: row;
   border-radius: 20px;
-  box-shadow: 0px 0px 50px 1px #000;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 
@@ -407,6 +407,7 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  margin: 3vw 0;
 }
 
 
